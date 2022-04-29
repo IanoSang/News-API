@@ -41,7 +41,7 @@ def process_results(sources_list):
         sources_list: A list of dictionaries that contain sources details
 
     Returns :
-        sources_results: A list of movie objects
+        sources_results: A list of sources objects
     """
     sources_results = []
     for sources_item in sources_list:
