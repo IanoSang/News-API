@@ -1,10 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html'%}
+{% import 'macros.html' as macro%}
 
-</body>
-</html>
+{% block styles%}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{% endblock %}
+{%block content%}
+<div class="container">
+        <div class="d-flex flex-row">
+            <div class = "col-md-12">
+                <h3 align="center">News Sources</h3>
+                <h4>{{ macro.displaySourcesList(sources)}}</h4>
+            </div>
+        </div>          
+</div>
+{%endblock%}
