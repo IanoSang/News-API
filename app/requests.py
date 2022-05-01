@@ -1,5 +1,5 @@
 import urllib.request, json
-from .models import Sources
+from .models import Sources, Articles
 
 # Getting api key
 api_key = None
@@ -53,3 +53,23 @@ def process_sources(sources_list):
             sources_results.append(sources_object)
 
     return sources_results
+
+
+def get_articles(sources_id):
+    """
+    Function that gets the json response to our url request
+    """
+    get_articles_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey=5feeb759a70e4166a64fb65343d54d14'.format(
+        sources_id, api_key)
+
+    with urllib.request.urlopen(get_articles_url) as url:
+        get_articles_data = url.read()
+        get_articles_response = json.loads(get_articles_data)
+
+        articles_results = None
+
+        if get_articles_response['sources']:
+            articles_results_list = get_articles_response['sources']
+            articles_results = process_articles(articles_results_list)
+
+    return articles_results
