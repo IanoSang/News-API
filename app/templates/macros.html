@@ -1,15 +1,14 @@
 {% macro displaySourcesList(sources_list) %}
-
     {% for sources in sources_list %}
-<div class="row">
-        <div class="card w-50">
-          <div class="card-body">
-            <h5 class="card-title">{{sources.name}}</h5>
-            <p class="card-text">{{sources.description}}</p>
-              <p>{{sources.category}} news category</p>
-            <a href="/articles/{{sources.id}}"><button class ="btn btn-info">{{ sources.id}}</button></a>
-          </div>
-        </div>
+    <div class="row">
+            <div class="card w-50">
+              <div class="card-body">
+                <h5 class="card-title">{{sources.name}}</h5>
+                <p class="card-text">{{sources.description}}</p>
+                  <p>{{sources.category}} news category</p>
+                <a href="/articles/{{sources.id}}"><button class ="btn btn-info">{{ sources.id}}</button></a>
+              </div>
+            </div>
     </div>
     {% endfor %}
 
