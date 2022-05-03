@@ -1,16 +1,42 @@
 {% macro displaySourcesList(sources_list) %}
-
     {% for sources in sources_list %}
-<div class="row">
-        <div class="card w-50">
-          <div class="card-body">
-            <h5 class="card-title">{{sources.name}}</h5>
-            <p class="card-text">{{sources.description}}</p>
-              <p>{{sources.category}} news category</p>
-            <a href="/articles/{{sources.id}}"><button class ="btn btn-info">{{ sources.id}}</button></a>
-          </div>
-        </div>
-    </div>
-    {% endfor %}
 
-{% endmacro %}
+     <div class="col-md-6 ">
+            <div class="card bg-transparent mt-2">
+
+              <div class="card-body">
+                  {% if sources.name %}
+                <h5 class="card-title">{{sources.name}}</h5>
+                {% endif %}
+                <p class="card-text">{{sources.description}}</p>
+                <p class="card-text"><small class="text-muted">Category: {{sources.category}} </small></p>
+                <a href="/articles/{{sources.id}}"><button class ="btn btn-info">{{ sources.id |upper}}</button></a>
+
+              </div>
+            </div>
+     </div>
+
+    {% endfor %}
+    {% endmacro %}
+
+   {% macro displayArticlesList(articles_list) %}
+
+        {% for articles in articles_list %}
+
+        <div class="col-lg-6 mt-3">
+            <div class="card  bg-transparent">
+
+                {% if articles.urlToImage %}
+
+                <img src="{{ articles.urlToImage }}" height="300" width="525" alt="Article Image">
+                {% endif %}
+                <div class="card-body">
+                    <p><b>{{ articles.title }}</b></p>
+                    <p>Uploaded on:{{ articles.publishedAt}} </p>
+                    <a class ="btn btn-dark" href="{{ articles.url }}">Read More</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    {% endmacro %}
