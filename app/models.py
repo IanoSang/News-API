@@ -12,14 +12,13 @@ class Sources:
 
 class Articles:
     """
-    Articles class to define News Articles Objects
+    News Articles class to define news articles objects
     """
-
-    def __int__(self, title, image, content, author, time, url):
+    def __init__(self,title,urlToImage,content,author,publishedAt,url):
         self.title = title
-        self.image = image
+        self.urlToImage = urlToImage
         self.content = content
         self.author = author
-        self.time = time
-        self.url = url
+        self.publishedAt= publishedAt
+        self.url=url
 
